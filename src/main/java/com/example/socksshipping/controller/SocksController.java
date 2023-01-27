@@ -2,6 +2,7 @@ package com.example.socksshipping.controller;
 
 import com.example.socksshipping.exception.EmptyStockException;
 import com.example.socksshipping.dto.SockShippingDto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import com.example.socksshipping.model.Color;
 import com.example.socksshipping.model.SocksSize;
@@ -23,12 +24,12 @@ public class SocksController {
     private final SocksService sockService;
 
     @PostMapping
-    public void addSocks(@RequestBody SockShippingDto sockShippingDto) {
+    public void addSocks(@Valid @RequestBody SockShippingDto sockShippingDto) {
         sockService.addSocks(sockShippingDto);
     }
 
     @PutMapping
-    public void sellSocks(@RequestBody SockShippingDto sockShippingDto) {
+    public void sellSocks(@Valid @RequestBody SockShippingDto sockShippingDto) {
         sockService.sellSocks(sockShippingDto);
     }
 
@@ -41,7 +42,7 @@ public class SocksController {
     }
 
     @DeleteMapping
-    public void removeDefectiveSocks(@RequestBody SockShippingDto sockShippingDto) {
+    public void removeDefectiveSocks(@Valid @RequestBody SockShippingDto sockShippingDto) {
         sockService.removeDefectiveSocks(sockShippingDto);
     }
 
